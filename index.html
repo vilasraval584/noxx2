@@ -1,38 +1,473 @@
-<!-- Telegram CTA -->
-        <a
-          href="https://t.me/+Qtl_Fc6YPOkyYTk1"
-          class="join-button"
-          target="_blank"
-          rel="noopener noreferrer"
-          onclick="telegramClick()"
-        >
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Join Our Telegram Channel</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #020814;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* BACKGROUND */
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 0%, #073b69 0%, #020814 38%, #01050c 100%);
+    }
+
+    .glow1,
+    .glow2 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .35;
+    }
+
+    .glow1 {
+      width: 300px;
+      height: 300px;
+      background: #008cff;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .glow2 {
+      width: 250px;
+      height: 250px;
+      background: #0066ff;
+      bottom: 10%;
+      right: -150px;
+    }
+
+    .dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #159fe3;
+      box-shadow: 0 0 12px #159fe3;
+      opacity: .7;
+    }
+
+    .dot1 { left: 8%; top: 15%; }
+    .dot2 { left: 20%; top: 55%; }
+    .dot3 { left: 85%; top: 18%; }
+    .dot4 { left: 92%; top: 60%; }
+    .dot5 { left: 12%; top: 80%; }
+    .dot6 { left: 75%; top: 45%; }
+
+    /* PAGE */
+    .page {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 30px 15px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    /* CARD */
+    .card {
+      width: 100%;
+      padding: 35px 20px 25px;
+      border-radius: 28px;
+      background: rgba(5, 18, 33, .88);
+      border: 1px solid rgba(64, 177, 255, .22);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.65),
+        inset 0 0 40px rgba(0,130,255,.04);
+      backdrop-filter: blur(15px);
+    }
+
+    /* TELEGRAM LOGO */
+    .telegram-logo {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(145deg, #32c4ff, #0879d2);
+      box-shadow:
+        0 0 20px rgba(0,160,255,.5),
+        0 0 55px rgba(0,140,255,.25);
+    }
+
+    .telegram-logo svg {
+      width: 55px;
+      height: 55px;
+      fill: white;
+    }
+
+    /* TITLE */
+    .title {
+      text-align: center;
+      font-size: 43px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
+    }
+
+    .title-blue {
+      color: #12a9f5;
+      text-shadow: 0 0 25px rgba(0,160,255,.25);
+    }
+
+    .description {
+      text-align: center;
+      color: #b5c4d3;
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 430px;
+      margin: auto;
+    }
+
+    /* FEATURES */
+    .features {
+      margin-top: 28px;
+      border: 1px solid rgba(82,173,232,.16);
+      border-radius: 20px;
+      background: rgba(1,12,24,.65);
+      overflow: hidden;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 17px 15px;
+      border-bottom: 1px solid rgba(120,180,220,.10);
+    }
+
+    .feature:last-child {
+      border-bottom: none;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      background: rgba(0,160,255,.13);
+      border: 1px solid rgba(0,170,255,.35);
+      box-shadow: 0 0 15px rgba(0,160,255,.12);
+    }
+
+    .feature:nth-child(2) .icon {
+      background: rgba(150,80,255,.13);
+      border-color: rgba(170,100,255,.35);
+    }
+
+    .feature:nth-child(3) .icon {
+      background: rgba(0,220,120,.11);
+      border-color: rgba(0,230,130,.3);
+    }
+
+    .feature h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: #91a5b9;
+      line-height: 1.4;
+    }
+
+    /* BUTTON */
+    .join-button {
+      width: 100%;
+      min-height: 64px;
+      margin-top: 25px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      text-decoration: none;
+      color: white;
+      font-size: 19px;
+      font-weight: 900;
+      background: linear-gradient(100deg, #087ed5, #12aef5, #087ed5);
+      box-shadow:
+        0 10px 35px rgba(0,145,235,.35),
+        inset 0 1px 1px rgba(255,255,255,.3);
+      transition: .2s;
+    }
+
+    .join-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 45px rgba(0,155,255,.5);
+    }
+
+    .join-button:active {
+      transform: scale(.98);
+    }
+
+    .join-button svg {
+      width: 29px;
+      height: 29px;
+      fill: white;
+    }
+
+    /* TRUST */
+    .trust {
+      text-align: center;
+      margin-top: 14px;
+      color: #9eafbf;
+      font-size: 12px;
+    }
+
+    /* MEMBERS */
+    .members {
+      margin-top: 23px;
+      padding: 18px 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-radius: 18px;
+      border: 1px solid rgba(80,170,230,.13);
+      background: rgba(4,15,28,.7);
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-left: -9px;
+      border: 2px solid #071426;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      background: linear-gradient(135deg,#28445d,#0b1828);
+    }
+
+    .avatar:first-child {
+      margin-left: 0;
+    }
+
+    .avatar:last-child {
+      background: linear-gradient(135deg,#138edb,#074a8e);
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .members h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .members p {
+      color: #899caf;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      color: #637689;
+      font-size: 11px;
+      margin-top: 20px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 400px) {
+
+      .page {
+        padding: 18px 10px;
+      }
+
+      .card {
+        padding: 28px 14px 22px;
+        border-radius: 23px;
+      }
+
+      .telegram-logo {
+        width: 82px;
+        height: 82px;
+      }
+
+      .telegram-logo svg {
+        width: 46px;
+        height: 46px;
+      }
+
+      .title {
+        font-size: 32px;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+
+      .feature {
+        padding: 14px 11px;
+      }
+
+      .join-button {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="background">
+    <div class="glow1"></div>
+    <div class="glow2"></div>
+
+    <div class="dot dot1"></div>
+    <div class="dot dot2"></div>
+    <div class="dot dot3"></div>
+    <div class="dot dot4"></div>
+    <div class="dot dot5"></div>
+    <div class="dot dot6"></div>
+  </div>
+
+  <div class="page">
+
+    <div class="container">
+
+      <div class="card">
+
+        <!-- TELEGRAM LOGO -->
+        <div class="telegram-logo">
+
           <svg viewBox="0 0 24 24">
             <path d="M21.7 3.3c.3-1.2-.5-1.7-1.5-1.3L2.5 9.1C1.3 9.6 1.3 10.4 2.3 10.8l4.5 1.4 1.7 5.3c.2.7.1 1 .8 1 .5 0 .7-.2 1-.5l2.2-2.1 4.6 3.4c.8.5 1.4.3 1.6-.7L21.7 3.3zM8.2 11.8l9.8-6.2c.5-.3.9-.1.5.2l-8.1 7.4-.3 3.4-1.9-4.8z"/>
           </svg>
 
-          <span>JOIN TELEGRAM</span>
-        </a>
-
-        <div class="trust">
-          <span class="shield">🛡</span>
-          <span>100% Free • Official Channel</span>
         </div>
 
-        <!-- Members -->
+        <!-- TITLE -->
+        <h1 class="title">
+          Join Our<br>
+          <span class="title-blue">Telegram Channel</span>
+        </h1>
+
+        <p class="description">
+          Get the latest updates, exclusive information and
+          important announcements directly on Telegram.
+        </p>
+
+        <!-- FEATURES -->
+        <div class="features">
+
+          <div class="feature">
+
+            <div class="icon">⚡</div>
+
+            <div>
+              <h3>Latest Updates</h3>
+              <p>Stay updated with the latest information.</p>
+            </div>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="icon">💎</div>
+
+            <div>
+              <h3>Exclusive Content</h3>
+              <p>Get access to exclusive tips and content.</p>
+            </div>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="icon">🔔</div>
+
+            <div>
+              <h3>Fast Notifications</h3>
+              <p>Receive instant notifications and alerts.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- TELEGRAM BUTTON -->
+        <a
+          class="join-button"
+          href="https://t.me/+Qtl_Fc6YPOkyYTk1"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick="trackTelegram()"
+        >
+
+          <svg viewBox="0 0 24 24">
+            <path d="M21.7 3.3c.3-1.2-.5-1.7-1.5-1.3L2.5 9.1C1.3 9.6 1.3 10.4 2.3 10.8l4.5 1.4 1.7 5.3c.2.7.1 1 .8 1 .5 0 .7-.2 1-.5l2.2-2.1 4.6 3.4c.8.5 1.4.3 1.6-.7L21.7 3.3zM8.2 11.8l9.8-6.2c.5-.3.9-.1.5.2l-8.1 7.4-.3 3.4-1.9-4.8z"/>
+          </svg>
+
+          JOIN TELEGRAM
+
+        </a>
+
+        <!-- TRUST -->
+        <div class="trust">
+          🛡️ &nbsp;100% Free • Official Channel
+        </div>
+
+        <!-- MEMBERS -->
         <div class="members">
 
           <div class="avatars">
+
             <div class="avatar">👨</div>
             <div class="avatar">👩</div>
             <div class="avatar">👨</div>
             <div class="avatar">2K+</div>
+
           </div>
 
-          <div class="member-text">
+          <div>
             <h3>Trusted by 2000+ Members</h3>
-            <p>
-              Join our growing community on Telegram.
-            </p>
+            <p>Join our growing community on Telegram.</p>
           </div>
 
         </div>
@@ -41,21 +476,24 @@
           © 2026 • Telegram Community
         </div>
 
-      </section>
+      </div>
 
     </div>
 
-  </main>
+  </div>
 
+
+  <!-- META PIXEL EVENT -->
   <script>
-    function telegramClick() {
 
-      // Meta Pixel event
+    function trackTelegram() {
+
       if (typeof fbq === "function") {
         fbq("track", "Lead");
       }
 
     }
+
   </script>
 
 </body>
